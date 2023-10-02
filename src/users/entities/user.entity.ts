@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity({name: "users"})
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,7 +9,7 @@ export class UserEntity {
   name: string;
 
   @Column({name: "last_name", type: "varchar", length: 100})
-  lastName: string;
+  last_name: string;
 
   @Column({ type: "varchar", length: 100, unique: true})
   email: string;
@@ -23,9 +23,9 @@ export class UserEntity {
   @Column({ nullable: true })
   image: string;
 
-  @CreateDateColumn({ name: 'accept_terms' })
-  acceptTerms: boolean;
+  @Column({ name: 'accept_terms_and_privacy_politics' })
+  accept_terms_and_privacy_politics: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: string;
+  createdAt: Date
 }
