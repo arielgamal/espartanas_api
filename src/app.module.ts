@@ -11,20 +11,20 @@ import { ExerciciosModule } from './exercicios/exercicios.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (ConfigService: ConfigService) => ({
-        type: "mysql",
+        type: 'mysql',
         host: 'localhost',
         port: 3306,
-        username: ConfigService.get("DB_USERNAME"),
-        password: ConfigService.get("DB_PASSWORD"),
-        database: 'espartanas',
+        username: ConfigService.get('DB_USERNAME'),
+        password: ConfigService.get('DB_PASSWORD'),
+        database: ConfigService.get('BD_DATABASE'),
         entities: [UserEntity],
         synchronize: true,
-      })
+      }),
     }),
     // TypeOrmModule.forRoot({
     //   type: 'mysql',
@@ -37,7 +37,8 @@ import { ExerciciosModule } from './exercicios/exercicios.module';
     //   synchronize: true,
     // }),
     UserModule,
-    ExerciciosModule],
+    ExerciciosModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
