@@ -7,6 +7,7 @@ import { UserModule } from './users/user.module';
 import { UserEntity } from './users/entities/user.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ExerciciosModule } from './exercicios/exercicios.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ExerciciosModule } from './exercicios/exercicios.module';
     // }),
     UserModule,
     ExerciciosModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
